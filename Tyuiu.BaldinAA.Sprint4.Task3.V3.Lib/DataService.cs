@@ -5,20 +5,22 @@ namespace Tyuiu.BaldinAA.Sprint4.Task3.V3.Lib
     {
         public int Calculate(int[,] array)
         {
-            int res = 0;
-            int height = array.GetLength(0);
-            int width = array.GetLength(1);
-            for (int y = 0; y < height; y++)
+            int rows = array.GetUpperBound(0) + 1;
+            int columns = array.Length / rows;
+
+            int count = 0;
+
+            for (int i = 0; i < rows; i++)
             {
-                for (int x = 0; x < width; x++)
+                for (int j = 0; j < columns; j++)
                 {
-                    if (x == 0)
+                    if (array[i, j] % 2 != 0)
                     {
-                        res += array[y, 0];
+                        count++;
                     }
                 }
             }
-            return res;
+            return count;
         }
     }
 }
